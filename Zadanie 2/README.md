@@ -5,7 +5,7 @@ Jeżeli słońce jest pod horyzontem do tabeli temp w kolumnie measurement trafi
 jeżeli zaś jest nad horyzontem pojawiają się wartości numeryczne. 
  
 Struktura tabeli (fragment przykładowych danych dla wschodu słońca):
-
+```
 +------------+-----------------+---------------------+
 | id(AI, PK) | time(timestamp) | measurement(double) |
 +------------+-----------------+---------------------+
@@ -15,7 +15,7 @@ Struktura tabeli (fragment przykładowych danych dla wschodu słońca):
 |          4 |      1612160280 | -4.34               |
 |          5 |      1612160340 | -4.29               |
 +------------+-----------------+---------------------+
-
+```
 1) Przygotuj CREATE tabeli 'temp'.
 2) Przygotuj inserty danych testowych dla 3 dni z rozdzielczościa 60 sekundową. 
 3) Przygotuj jedno zapytanie SQL, które zwróci czasy wschodów i zachodów słońca dla każdego dnia, dla danych zgromadzonych w bazie.
