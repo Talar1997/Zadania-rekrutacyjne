@@ -5,17 +5,17 @@ function createTree() {
 
 function createAsteriskTree(rows) {
     if (isInputValid(rows)) {
-        drawRaw(1, rows)
+        drawRow(1, rows)
     }
 }
 
 const isInputValid = (number) => !isNaN(number) && number > 0
 
-const drawRaw = (currentRow, maxRows) => {
+const drawRow = (currentRow, maxRows) => {
     if (currentRow <= maxRows) {
         const rowString = createRowString(maxRows, currentRow);
         console.log(rowString)
-        drawRaw(++currentRow, maxRows)
+        drawRow(++currentRow, maxRows)
     }
 }
 
