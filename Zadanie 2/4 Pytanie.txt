@@ -1,0 +1,3 @@
+Czy baza relacyjna to najlepsze rozwiązanie do gromadzenia tego typu danych?
+
+Brakuje mi doświadczenia w praktyce, żeby dokładnie odpowiedzieć na to pytanie. Według mnie alternatywą mogą być bazy NoSQL. Z drugiej strony, polecanymi w internecie rozwiązaniami dla danych pomiarowych jest Timescale oparty o PostgreSQL (https://www.timescale.com/), czyli bazę relacyjną.
