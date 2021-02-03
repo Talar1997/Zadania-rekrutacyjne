@@ -14,22 +14,20 @@ public class ConsoleSunriseSunsetView implements View {
 
     @Override
     public void display() {
+        System.out.println("Dzień \t | Wschód \t | Zachód");
+
         for (SunriseSunset sunriseSunset : dataset) {
-            String formattedDate = FormatTimestamp.formatTimestamp(sunriseSunset.getDay());
-            System.out.print(formattedDate + " | ");
-            if (sunriseSunset.getSunrise() != null) {
-                System.out.print(sunriseSunset.getSunrise().getTime() + " | ");
-            } else {
-                System.out.print("-\t" + " | ");
-            }
+            String formattedDate = FormatTimestamp.format(sunriseSunset.getDay(), "yyyy-MM-dd");
 
-            if (sunriseSunset.getSunset() != null) {
-                System.out.print(sunriseSunset.getSunset().getTime() + " | ");
-            } else {
-                System.out.print("-\t" + " | ");
-            }
+            String sunriseString = sunriseSunset.getSunrise() != null
+                    ? String.valueOf(sunriseSunset.getSunrise().getTime())
+                    : " - ";
 
-            System.out.println();
+            String sunsetString = sunriseSunset.getSunset() != null
+                    ? String.valueOf(sunriseSunset.getSunset().getTime())
+                    : " - ";
+
+            System.out.printf("%s | %s | %s \n", formattedDate, sunriseString, sunsetString);
         }
     }
 }

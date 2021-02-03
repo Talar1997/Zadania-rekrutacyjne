@@ -8,6 +8,6 @@ import java.util.List;
 public class GeneratedTempRepository implements Repository<Temp> {
     @Override
     public List<Temp> getAll() {
-        return GenerateTempDataset.generate(3);
+        return GenerateTempDataset.generate(25);
     }
 }

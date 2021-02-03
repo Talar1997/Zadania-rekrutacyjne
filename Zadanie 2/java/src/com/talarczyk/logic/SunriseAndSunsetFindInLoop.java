@@ -47,8 +47,8 @@ public class SunriseAndSunsetFindInLoop implements SunriseAndSunsetStrategy {
             SunriseSunset tail = sunriseSunsetList.get(i);
             SunriseSunset head = sunriseSunsetList.get(i + 1);
 
-            String tailFormattedDate = FormatTimestamp.formatTimestamp(tail.getDay());
-            String headFormattedDate = FormatTimestamp.formatTimestamp(head.getDay());
+            String tailFormattedDate = FormatTimestamp.format(tail.getDay());
+            String headFormattedDate = FormatTimestamp.format(head.getDay());
 
             if(tailFormattedDate.equals(headFormattedDate)){
                 SunriseSunset merged = new SunriseSunset();
