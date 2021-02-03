@@ -1,6 +1,7 @@
 package com.talarczyk.view;
 
 import com.talarczyk.entities.SunriseSunset;
+import com.talarczyk.entities.Temp;
 import com.talarczyk.utils.FormatTimestamp;
 
 import java.util.List;
@@ -19,15 +20,17 @@ public class ConsoleSunriseSunsetView implements View {
         for (SunriseSunset sunriseSunset : dataset) {
             String formattedDate = FormatTimestamp.format(sunriseSunset.getDay(), "yyyy-MM-dd");
 
-            String sunriseString = sunriseSunset.getSunrise() != null
-                    ? String.valueOf(sunriseSunset.getSunrise().getTime())
-                    : " - ";
+            String sunriseString = getTempString(sunriseSunset.getSunrise());
 
-            String sunsetString = sunriseSunset.getSunset() != null
-                    ? String.valueOf(sunriseSunset.getSunset().getTime())
-                    : " - ";
+            String sunsetString = getTempString(sunriseSunset.getSunset());
 
             System.out.printf("%s | %s | %s \n", formattedDate, sunriseString, sunsetString);
         }
+    }
+
+    private String getTempString(Temp temp) {
+        return temp != null
+                ? String.valueOf(temp.getTime())
+                : " - ";
     }
 }

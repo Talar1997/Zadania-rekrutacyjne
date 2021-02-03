@@ -1,5 +1,7 @@
 package com.talarczyk.entities;
 
+import com.talarczyk.utils.FormatTimestamp;
+
 import java.sql.Timestamp;
 
 public class Temp {
@@ -25,6 +27,10 @@ public class Temp {
         return time;
     }
 
+    public String getSimplifiedTime(){
+        return FormatTimestamp.format(time);
+    }
+
     public void setTime(Timestamp time) {
         this.time = time;
     }
@@ -36,4 +42,6 @@ public class Temp {
     public void setMeasurement(Double measurement) {
         this.measurement = measurement;
     }
+
+
 }
