@@ -16,15 +16,15 @@ public class SunriseAndSunsetFindInLoop implements SunriseAndSunsetStrategy {
 
         Predicate<Temp> byMeasurement = measurement -> measurement.getMeasurement() != null;
 
-        Map<String, List<Temp>> result = measurements.stream()
+        Map<String, List<Temp>> filterResult = measurements.stream()
                 .filter(byMeasurement)
                 .collect(groupingBy(Temp::getSimplifiedTime));
 
 
-        for (Map.Entry<String, List<Temp>> entry : result.entrySet()) {
-            SunriseSunset sunriseSunset = new SunriseSunset();
+        var tempValues = new ArrayList<>(filterResult.values());
 
-            List<Temp> value = entry.getValue();
+        tempValues.forEach(value -> {
+            SunriseSunset sunriseSunset = new SunriseSunset();
 
             Temp sunrise = value.get(0);
             Temp sunset = value.get(value.size() - 1);
@@ -34,7 +34,9 @@ public class SunriseAndSunsetFindInLoop implements SunriseAndSunsetStrategy {
             sunriseSunset.setSunset(sunset);
 
             if (sunriseSunset.isValid()) results.add(sunriseSunset);
-        }
+        });
+
+        results.sort((temp1, temp2) -> temp1.getDay().getTime() > temp2.getDay().getTime() ? 1 : -1);
 
         return results;
     }
