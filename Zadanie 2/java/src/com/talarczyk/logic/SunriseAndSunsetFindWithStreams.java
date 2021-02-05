@@ -11,25 +11,20 @@ import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 
-public class SunriseAndSunsetFindInLoop implements SunriseAndSunsetStrategy {
+public class SunriseAndSunsetFindWithStreams implements SunriseAndSunsetStrategy {
     public List<SunriseSunset> find(List<Temp> measurements) {
-        List<SunriseSunset> results;
-
         Predicate<Temp> byMeasurement = measurement -> measurement.getMeasurement() != null;
 
         Map<String, List<Temp>> filterResult = measurements.stream()
                 .filter(byMeasurement)
                 .collect(groupingBy(Temp::getSimplifiedTime));
 
-
         var tempValues = new ArrayList<>(filterResult.values());
 
-        results = tempValues.stream()
+        return tempValues.stream()
                 .map(this::createSunriseSunsetFromTempList)
                 .sorted(this::sortSunriseSunset)
                 .collect(Collectors.toList());
-
-        return results;
     }
 
     private int sortSunriseSunset(SunriseSunset temp1, SunriseSunset temp2) {

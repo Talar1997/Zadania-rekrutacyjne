@@ -2,8 +2,7 @@ package com.talarczyk;
 
 import com.talarczyk.entities.SunriseSunset;
 import com.talarczyk.entities.Temp;
-import com.talarczyk.logic.SunriseAndSunsetFindInLoop;
-import com.talarczyk.logic.SunriseAndSunsetFindRecursive;
+import com.talarczyk.logic.SunriseAndSunsetFindWithStreams;
 import com.talarczyk.logic.SunriseAndSunsetStrategy;
 import com.talarczyk.repository.Repository;
 import com.talarczyk.repository.GeneratedTempRepository;
@@ -19,7 +18,7 @@ public class Main {
 
         List<Temp> temps = repository.getAll();
 
-        SunriseAndSunsetStrategy sunriseAndSunsetStrategy = new SunriseAndSunsetFindInLoop();
+        SunriseAndSunsetStrategy sunriseAndSunsetStrategy = new SunriseAndSunsetFindWithStreams();
         //SunriseAndSunsetStrategy sunriseAndSunsetStrategy = new SunriseAndSunsetFindRecursive();
 
         List<SunriseSunset> sunrisesAndSunsets = sunriseAndSunsetStrategy.find(temps);
