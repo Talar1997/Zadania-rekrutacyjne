@@ -7,12 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 
 public class SunriseAndSunsetFindInLoop implements SunriseAndSunsetStrategy {
     public List<SunriseSunset> find(List<Temp> measurements) {
-        List<SunriseSunset> results = new ArrayList<>();
+        List<SunriseSunset> results;
 
         Predicate<Temp> byMeasurement = measurement -> measurement.getMeasurement() != null;
 
@@ -23,21 +24,28 @@ public class SunriseAndSunsetFindInLoop implements SunriseAndSunsetStrategy {
 
         var tempValues = new ArrayList<>(filterResult.values());
 
-        tempValues.forEach(value -> {
-            SunriseSunset sunriseSunset = new SunriseSunset();
-
-            Temp sunrise = value.get(0);
-            Temp sunset = value.get(value.size() - 1);
-
-            sunriseSunset.setDay(sunrise.getTime());
-            sunriseSunset.setSunrise(sunrise);
-            sunriseSunset.setSunset(sunset);
-
-            if (sunriseSunset.isValid()) results.add(sunriseSunset);
-        });
-
-        results.sort((temp1, temp2) -> temp1.getDay().getTime() > temp2.getDay().getTime() ? 1 : -1);
+        results = tempValues.stream()
+                .map(this::createSunriseSunsetFromTempList)
+                .sorted(this::sortSunriseSunset)
+                .collect(Collectors.toList());
 
         return results;
+    }
+
+    private int sortSunriseSunset(SunriseSunset temp1, SunriseSunset temp2) {
+        return temp1.getDay().getTime() > temp2.getDay().getTime() ? 1 : -1;
+    }
+
+    private SunriseSunset createSunriseSunsetFromTempList(List<Temp> temps) {
+        SunriseSunset sunriseSunset = new SunriseSunset();
+
+        Temp sunrise = temps.get(0);
+        Temp sunset = temps.get(temps.size() - 1);
+
+        sunriseSunset.setDay(sunrise.getTime());
+        sunriseSunset.setSunrise(sunrise);
+        sunriseSunset.setSunset(sunset);
+
+        return sunriseSunset;
     }
 }
