@@ -7,6 +7,14 @@ public class SunriseSunset {
     public Temp sunset;
     public Temp sunrise;
 
+    public SunriseSunset() { }
+
+    public SunriseSunset(Timestamp day, Temp sunset, Temp sunrise) {
+        this.day = day;
+        this.sunset = sunset;
+        this.sunrise = sunrise;
+    }
+
     public Timestamp getDay() {
         return day;
     }
@@ -25,6 +33,10 @@ public class SunriseSunset {
 
     public Temp getSunrise() {
         return sunrise;
+    }
+
+    public long getDayTime(){
+        return this.day.getTime();
     }
 
     public void setSunrise(Temp sunrise) {

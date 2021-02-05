@@ -28,19 +28,13 @@ public class SunriseAndSunsetFindWithStreams implements SunriseAndSunsetStrategy
     }
 
     private int sortSunriseSunset(SunriseSunset temp1, SunriseSunset temp2) {
-        return temp1.getDay().getTime() > temp2.getDay().getTime() ? 1 : -1;
+        return temp1.getDayTime() > temp2.getDayTime() ? 1 : -1;
     }
 
     private SunriseSunset createSunriseSunsetFromTempList(List<Temp> temps) {
-        SunriseSunset sunriseSunset = new SunriseSunset();
-
         Temp sunrise = temps.get(0);
         Temp sunset = temps.get(temps.size() - 1);
 
-        sunriseSunset.setDay(sunrise.getTime());
-        sunriseSunset.setSunrise(sunrise);
-        sunriseSunset.setSunset(sunset);
-
-        return sunriseSunset;
+        return new SunriseSunset(sunrise.getTime(), sunset, sunrise);
     }
 }
