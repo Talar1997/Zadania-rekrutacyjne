@@ -10,7 +10,8 @@ import java.util.Random;
 
 public class GenerateTempDataset {
     public static List<Temp> generate(int days) {
-        int totalMeasurements = 1440 * days;
+        int minutesInDay = 1440;
+        int totalMeasurements = minutesInDay * days;
         List<Temp> dataset = new ArrayList<>();
         Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
         Double measurement = null;

@@ -7,7 +7,8 @@ public class SunriseSunset {
     public Temp sunset;
     public Temp sunrise;
 
-    public SunriseSunset() { }
+    public SunriseSunset() {
+    }
 
     public SunriseSunset(Timestamp day, Temp sunset, Temp sunrise) {
         this.day = day;
@@ -35,7 +36,7 @@ public class SunriseSunset {
         return sunrise;
     }
 
-    public long getDayTime(){
+    public long getDayTime() {
         return this.day.getTime();
     }
 
@@ -43,7 +44,7 @@ public class SunriseSunset {
         this.sunrise = sunrise;
     }
 
-    public boolean isValid(){
+    public boolean isValid() {
         return this.sunrise != null || this.sunset != null;
     }
 }

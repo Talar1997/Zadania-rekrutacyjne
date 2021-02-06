@@ -4,6 +4,7 @@ import logic.sunriseAndSunset.SunriseAndSunsetFindEasiest
 import logic.sunriseAndSunset.SunriseAndSunsetStrategy
 import repository.GeneratedTempRepository
 import repository.Repository
+import view.ConsoleSunriseSunsetView
 
 fun main() {
     val tempRepository: Repository<Temp> = GeneratedTempRepository()
@@ -14,5 +15,6 @@ fun main() {
 
     val sunrisesAndSunsets: List<SunriseSunset> = sunriseSunsetStrategy.find(temps)
 
-    //todo output here
+    val output = ConsoleSunriseSunsetView(sunrisesAndSunsets)
+    output.display()
 }
