@@ -28,7 +28,7 @@ class GenerateTempDataset {
             val hours = calendar.get(Calendar.HOUR_OF_DAY)
 
             return if(hours !in 4..19) null
-            else Random.nextDouble()
+            else Random.nextDouble(-5.0, 5.0)
         }
 
         private fun addValueToTimestamp(timestamp: Timestamp, seconds: Int): Timestamp{
